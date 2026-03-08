@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wolle_91 – Stream & Weekly Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="badge">Twitch · ALttPR · Nintendo</span>
+        <h1>Wolle_91</h1>
+        <p class="subtitle">Retro-Gaming, ALttPR Randomizer, Weekly Races und Community-Projekte.</p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="https://twitch.tv/wolle_91" target="_blank" rel="noopener noreferrer">Twitch</a>
+          <a class="btn" href="https://www.youtube.com/@wolle_91" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a class="btn" href="https://discord.com/invite/y9uqBbNetW" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a class="btn accent" href="https://wolle1991.github.io/weekly-dashboard/" target="_blank" rel="noopener noreferrer">Weekly Dashboard</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="assets/sheep-link.jpg" alt="Schaf im Zelda-Stil" class="hero-sheep">
+      </div>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <a href="index.html">Home</a>
+    <a href="#live">Twitch</a>
+    <a href="#weekly">Weekly</a>
+    <a href="#galerie">Schafe</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+
+  <main class="container">
+    <section id="live" class="card grid-two">
+      <div>
+        <p class="eyebrow">Live auf Twitch</p>
+        <h2>Dein Kanal direkt auf der Startseite</h2>
+        <p>
+          Unten ist dein Twitch-Kanal eingebettet. Wenn du live bist, sieht man direkt den Stream. Wenn du nicht live bist,
+          wird dein Kanalbereich angezeigt. Für GitHub Pages ist das die einfachste Lösung ohne extra Server.
+        </p>
+        <a class="btn primary" href="https://twitch.tv/wolle_91" target="_blank" rel="noopener noreferrer">Zum Kanal</a>
+      </div>
+      <div class="stream-frame-wrap">
+        <iframe
+          src="https://player.twitch.tv/?channel=wolle_91&parent=wolle1991.github.io&muted=true"
+          allowfullscreen="true"
+          scrolling="no"
+          frameborder="0"
+          class="stream-frame"
+          title="Twitch Stream von wolle_91"></iframe>
+      </div>
+    </section>
+
+    <section id="weekly" class="card weekly-card">
+      <div class="weekly-head">
+        <div>
+          <p class="eyebrow">ALttPR Weekly</p>
+          <h2>Nächstes Weekly Race</h2>
+          <p>Jeden Dienstag um 18:00 Uhr. Der Countdown läuft automatisch bis zum nächsten Termin.</p>
+        </div>
+        <a class="btn accent" href="https://wolle1991.github.io/weekly-dashboard/" target="_blank" rel="noopener noreferrer">Dashboard öffnen</a>
+      </div>
+
+      <div class="countdown" aria-live="polite">
+        <div class="time-box"><span id="days">0</span><small>Tage</small></div>
+        <div class="time-box"><span id="hours">0</span><small>Stunden</small></div>
+        <div class="time-box"><span id="minutes">0</span><small>Minuten</small></div>
+        <div class="time-box"><span id="seconds">0</span><small>Sekunden</small></div>
+      </div>
+
+      <p id="next-race-text" class="next-race-text"></p>
+    </section>
+
+    <section class="card links-card">
+      <p class="eyebrow">Schnellzugriff</p>
+      <h2>Alles Wichtige an einem Ort</h2>
+      <div class="quick-links">
+        <a href="https://twitch.tv/wolle_91" target="_blank" rel="noopener noreferrer">Twitch Kanal</a>
+        <a href="https://www.youtube.com/@wolle_91" target="_blank" rel="noopener noreferrer">YouTube Kanal</a>
+        <a href="https://discord.com/invite/y9uqBbNetW" target="_blank" rel="noopener noreferrer">Discord Server</a>
+        <a href="https://wolle1991.github.io/weekly-dashboard/" target="_blank" rel="noopener noreferrer">Weekly Dashboard</a>
+      </div>
+    </section>
+
+    <section id="galerie" class="card">
+      <p class="eyebrow">Maskottchen Galerie</p>
+      <h2>Ein paar deiner Schafe auf der Seite</h2>
+      <div class="gallery">
+        <figure>
+          <img src="assets/sheep-link.jpg" alt="Zelda Schaf">
+          <figcaption>Zelda-Schaf</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/sheep-assassin.png" alt="Assassinen Schaf">
+          <figcaption>Assassinen-Schaf</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/sheep-samurai.png" alt="Samurai Schaf">
+          <figcaption>Samurai-Schaf</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/sheep-samus.png" alt="Sci-Fi Schaf">
+          <figcaption>Sci-Fi-Schaf</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Robin Prinz · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+  </footer>
+
+  <script>
+    function getNextTuesdayAt18() {
+      const now = new Date();
+      const target = new Date(now);
+      const currentDay = now.getDay(); // So=0, Di=2
+      let daysUntilTuesday = (2 - currentDay + 7) % 7;
+
+      if (daysUntilTuesday === 0) {
+        const todayAt18 = new Date(now);
+        todayAt18.setHours(18, 0, 0, 0);
+        if (now >= todayAt18) {
+          daysUntilTuesday = 7;
+        }
+      }
+
+      target.setDate(now.getDate() + daysUntilTuesday);
+      target.setHours(18, 0, 0, 0);
+      return target;
+    }
+
+    function formatDateGerman(date) {
+      return date.toLocaleString('de-DE', {
+        weekday: 'long',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      }) + ' Uhr';
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const nextRace = getNextTuesdayAt18();
+      const diff = nextRace - now;
+
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+      const nextRaceText = document.getElementById('next-race-text');
+
+      if (diff <= 0) {
+        daysEl.textContent = '0';
+        hoursEl.textContent = '0';
+        minutesEl.textContent = '0';
+        secondsEl.textContent = '0';
+        nextRaceText.textContent = 'Das Weekly startet jetzt.';
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      daysEl.textContent = String(days);
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+      nextRaceText.textContent = 'Nächster Termin: ' + formatDateGerman(nextRace);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
